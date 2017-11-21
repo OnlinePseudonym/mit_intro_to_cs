@@ -1,10 +1,10 @@
-cube = -125
-for guess in range(abs(cube)+1):
-    if guess**3 >= abs(cube):
-        break
-if guess**3 != abs(cube):
-    print(cube, ' is not a perfect cube')
-else:
-    if cube < 0:
-        guess = -guess
-    print("Cube root of " + str(cube) + " is " + str(guess))
+epsilon = 0.01
+y = 24.0
+guess = y/2.0
+numGuesses = 0
+
+while abs(guess*guess - y) >= epsilon:
+    numGuesses += 1
+    guess = guess - (((guess**2) - y)/(2*guess))
+print ('numGuesses = ' + str(numGuesses))
+print('Square root of ' + str(y) + ' is about ' + str(guess))
