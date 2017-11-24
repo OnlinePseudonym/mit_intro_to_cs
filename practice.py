@@ -1,10 +1,6 @@
-epsilon = 0.01
-y = 24.0
-guess = y/2.0
-numGuesses = 0
+import math
 
-while abs(guess*guess - y) >= epsilon:
-    numGuesses += 1
-    guess = guess - (((guess**2) - y)/(2*guess))
-print ('numGuesses = ' + str(numGuesses))
-print('Square root of ' + str(y) + ' is about ' + str(guess))
+def polysum(n,s):
+    area = (0.25*n*s**2)/(math.tan(math.pi/n))
+    perim = n * s
+    return round((area + perim**2), 4)
