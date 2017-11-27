@@ -1,44 +1,13 @@
-def fib_faster(n):
-    global numFibCalls
-    numFibCalls += 1
-    current = 0
-    after = 1
-    for i in range(0,n):
-        current, after = after, current + after
-    return current
+def general_poly (L):
+    """ L, a list of numbers (n0, n1, n2, ... nk)
+    Returns a function, which when applied to a value x, returns the value
+    n0 * x^k + n1 * x^(k-1) + ... nk * x^0 """
 
-def fib_efficient(n, d):
-    global numFibCalls
-    numFibCalls += 1
-    if n in d:
-        return d[n]
-    else:
-        ans = fib_efficient(n-1, d) + fib_efficient(n-2, d)
-        d[n] = ans
-        return ans
-
-def fib(n):
-    global numFibCalls
-    numFibCalls += 1
-    if n==0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        return fib(n-1)+fib(n-2)
-
-d = {0:0, 1:1}
-
-n = 36
-numFibCalls = 0
-print("fib_faster")
-print(fib_faster(n))
-print(numFibCalls)
-numFibCalls = 0
-print("fib_efficient")
-print(fib_efficient(n, d))
-print(numFibCalls)
-numFibCalls = 0
-print("fib")
-print(fib(n))
-print(numFibCalls)
+    def evaluate(x):
+        k = len(L) - 1
+        sum = 0
+        for el in L:
+            sum += el * x ** k
+            k -= 1
+        return sum
+    return evaluate
