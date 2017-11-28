@@ -1,13 +1,12 @@
-def general_poly (L):
-    """ L, a list of numbers (n0, n1, n2, ... nk)
-    Returns a function, which when applied to a value x, returns the value
-    n0 * x^k + n1 * x^(k-1) + ... nk * x^0 """
+def fancy_divide(list_of_numbers, index):
+   denom = list_of_numbers[index]
+   return [simple_divide(item, denom) for item in list_of_numbers]
 
-    def evaluate(x):
-        k = len(L) - 1
-        sum = 0
-        for el in L:
-            sum += el * x ** k
-            k -= 1
-        return sum
-    return evaluate
+
+def simple_divide(item, denom):
+    try:
+        return item / denom
+    except ZeroDivisionError:
+        return 0
+
+print(fancy_divide([0, 2, 4], 0))
