@@ -39,6 +39,12 @@ class Rabbit(Animal):
         print("meep")
     def __add__(self, other):
         return Rabbit(0, self, other)
+    def __eq__(self, other):
+        parents_same = self.parent1.rid == other.parent1.rid \
+                       and self.parent2.rid == other.parent2.rid
+        parents_opposite = self.parent2.rid == other.parent1.rid \
+                       and self.parent1.rid == other.parent2.rid
+        return parents_same or parents_opposite
     def __str__(self):
         return "rabbit:"+str(self.name)+":"+str(self.age)
 
