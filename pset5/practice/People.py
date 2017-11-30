@@ -11,7 +11,7 @@ class Person(object):
         self.birthday = datetime.date(year, month, day)
     def getAge(self):
         """returns self's current age in days"""
-        if selef.birthday == None:
+        if self.birthday == None:
             raise ValueError
         return (datetime.date.today() - self.birthday).days
     def getLastName(self):
